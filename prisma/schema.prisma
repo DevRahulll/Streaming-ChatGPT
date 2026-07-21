@@ -30,7 +30,7 @@ model Conversation {
   userId String 
   title String
   model String? //e.g. openai/gpt-4.1- per - thread model override
-  systemPrompt String @db.Text
+  systemPrompt String? @db.Text
   isPinned Boolean @default(false)
   isArchieved Boolean @default(false)
   createdAt DateTime @default(now())
