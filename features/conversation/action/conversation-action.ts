@@ -33,7 +33,7 @@ export async function listConversations(): Promise<ConversationListItem[]> {
     const user = await requireUser();
 
     return prisma.conversation.findMany({
-        where: { userId: user.id, isArchieved: false },
+        where: { userId: user.id, isArchived: false },
         orderBy: [{ isPinned: "desc" }, { lastMessageAt: "desc" }],
         select: {
             id: true,
@@ -74,7 +74,7 @@ export async function updateConversation(
                 : {}),
             ...(data.isPinned !== undefined ? { isPinned: data.isPinned } : {}),
             ...(data.isArchived !== undefined
-                ? { isArchieved: data.isArchived }
+                ? { isArchived: data.isArchived }
                 : {}),
         },
     });
