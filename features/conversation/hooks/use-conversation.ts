@@ -36,6 +36,7 @@ export function useCreateConversations() {
     });
 }
 
+// rename, pin, archive a conversation
 export function useUpdateConversation() {
     const queryClient = useQueryClient();
 
@@ -63,6 +64,7 @@ export function useUpdateConversation() {
     });
 }
 
+//delete a conversation and leave the page if your were viewing it
 export function useDeleteConversation(activeId: string) {
     const queryClient = useQueryClient();
     const router = useRouter();
