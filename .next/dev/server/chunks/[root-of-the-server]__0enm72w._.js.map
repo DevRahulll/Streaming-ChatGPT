@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 88, "column": 0}, "map": {"version":3,"sources":["file:///Users/rahul/Documents/Coding-Room/GEN-AI-Project/04-chatgpt/proxy.ts"],"sourcesContent":["import { clerkMiddleware, createRouteMatcher } from \"@clerk/nextjs/server\";\n\nconst isPublicRoute = createRouteMatcher([\"/sign-in(.*)\"]);\n\nexport default clerkMiddleware(async (auth, req) => {\n    if (!isPublicRoute(req)) {\n        await auth.protect();\n    }\n});\n\nexport const config = {\n    matcher: [\n        // Skip Next.js internals and all static files, unless found in search params\n        \"/((?!_next|[^?]*\\\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)\",\n        // Always run for API routes\n        \"/(api|trpc)(.*)\",\n        // Always run for Clerk-specific frontend API routes\n        \"/__clerk/(.*)\",\n    ],\n};\n"],"names":["isPublicRoute","auth","req","protect","config","matcher"],"mappings":";;;;;;AAAA;AAAA;;AAEA,MAAMA,gBAAgB,IAAA,gMAAkB,EAAC;IAAC;CAAe;uCAE1C,IAAA,gMAAe,EAAC,OAAOC,MAAMC;IACxC,IAAI,CAACF,cAAcE,MAAM;QACrB,MAAMD,KAAKE,OAAO;IACtB;AACJ;AAEO,MAAMC,SAAS;IAClBC,SAAS;QACL,6EAA6E;QAC7E;QACA,4BAA4B;QAC5B;QACA,oDAAoD;QACpD;KACH;AACL"}}]
+}
